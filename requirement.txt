@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+####### requirements.txt #######
+
+
+# 安裝 selenium
+selenium
+
+# 安裝 webdriver-manager
+webdriver-manager
+
+# 安裝 pytest
+pytest
+
+# 安裝 allure report for pytest
+allure-pytest
+
+# 安裝 requests package
+requests
+
+# 安裝 xlsxwriter
+xlsxwriter
+
+# 安裝 pandas
+pandas
+
+# 安裝 pymysql
+pymysql
+
+# openpyxl
+openpyxl
+
+# 安裝並行測試套件 pytest-xdist
+pytest-xdist
+
+# 安裝自動重複執行套件
+pytest-rerunfailures
