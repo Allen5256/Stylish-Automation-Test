@@ -7,6 +7,8 @@ from .product.get_products_by_search_api import GetProductsBySearchAPI
 from .product.get_products_details_by_id_api import GetProductDetailsByIdAPI
 from .order.order_api import OrderAPI
 from .order.get_order_by_number_api import GetOrderByNumberAPI
+from .admin.create_product_api import CreateProductAPI
+from .admin.delete_product_api import DeleteProductAPI
 
 
 def init_api_objects(session, **kwargs):
@@ -23,3 +25,7 @@ def init_api_objects(session, **kwargs):
     # Order group
     session.order_api_object = OrderAPI(session)
     session.get_order_by_number_api_object = GetOrderByNumberAPI(session, order_number=kwargs.get('order_number'))
+
+    # Admin group
+    session.create_product_api_object = CreateProductAPI(session)
+    session.delete_product_api_object = DeleteProductAPI(session, product_id=kwargs.get('product_id'))

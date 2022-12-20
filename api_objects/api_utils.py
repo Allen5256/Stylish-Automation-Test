@@ -2,6 +2,8 @@ class APIUtils:
     def __init__(self, session):
         self.session = session
         self.payload = {}
+        self.form_data = {}
+        self.form_files = {}
         self.url = None
         self.response = None
 
@@ -48,4 +50,4 @@ class APIUtils:
         return self.response.status_code
 
     def get_response_error_msg(self):
-        return self.response.json()['errorMsg']
+        return self.response.json().get('errorMsg')
