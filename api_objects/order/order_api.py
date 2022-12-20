@@ -90,7 +90,9 @@ class OrderAPI(APIUtils):
             default_type = type(self.product_format[key])
             if isinstance(product_info[key], type(None)):
                 pass
-            elif default_type == dict:
+            elif default_type is dict:
+                if type(value) is dict:
+                    value = json.dumps(value)
                 product_info[key] = json.loads(value)
             else:
                 product_info[key] = default_type(value)
