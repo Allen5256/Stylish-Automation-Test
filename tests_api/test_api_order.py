@@ -16,7 +16,7 @@ default_order_info = {
     'total': 2429
 }
 default_product_info = {
-    'color': '{"code": "FFFFFF","name": "白色"}',
+    'color': '{"code":"FFFFFF","name":"白色"}',
     'id': '201807242216',
     'image': 'http://54.201.140.239/assets/201807242216/main.jpg',
     'name': '時尚輕鬆休閒西裝',
@@ -116,17 +116,11 @@ class TestOrderAPI:
 
 class TestGetOrderByNumber:
 
-    def test_get_order_by_number_success(self, login_session, prime, db):
+    def test_get_order_by_number_success(self, login_session, db):
         init_api_objects(login_session)
-        order_api_object = login_session.order_api_object
         get_order_by_number_api_object = login_session.get_order_by_number_api_object
 
-        order_api_object.set_payload_attribute(prime=prime)
-        order_api_object.set_order_info_to_payload(default_order_info)\
-            .set_recipient_info_to_order(default_recipient_info)\
-            .set_product_to_order(default_product_info)
-
-        order_number = order_api_object.send_request().get_order_number()
+        order_number = 1116703646060
         response_code = get_order_by_number_api_object\
             .set_order_number_to_url(order_number)\
             .send_request()\
@@ -170,7 +164,9 @@ class TestGetOrderByNumber:
         init_api_objects(session)
         get_order_by_number_api_object = session.get_order_by_number_api_object
 
+        order_number = 1116703646060
         response_code = get_order_by_number_api_object\
+            .set_order_number_to_url(order_number)\
             .send_request()\
             .get_http_response_code()
         response_err_msg = get_order_by_number_api_object.get_response_error_msg()
@@ -187,7 +183,9 @@ class TestGetOrderByNumber:
 
         logout_api_object.send_request()
 
+        order_number = 1116703646060
         response_code = get_order_by_number_api_object\
+            .set_order_number_to_url(order_number)\
             .send_request()\
             .get_http_response_code()
         response_err_msg = get_order_by_number_api_object.get_response_error_msg()
