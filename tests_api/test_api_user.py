@@ -66,9 +66,7 @@ class TestLogoutAPI:
         init_api_objects(login_session)
         logout_api_object = login_session.logout_api_object
 
-        # Logout
         response_code = logout_api_object.send_request().get_http_response_code()
-
         assert response_code == 200, \
             f'The response code is supposed to be 200, but actually get {response_code}.'
 
@@ -89,11 +87,7 @@ class TestLogoutAPI:
 
     def test_logout_without_token(self, session):
         init_api_objects(session)
-        login_api_object = session.login_api_object
         logout_api_object = session.logout_api_object
-
-        # Login first
-        login_api_object.send_request()
 
         # Logout directly without access token
         response_code = logout_api_object.send_request().get_http_response_code()
@@ -110,7 +104,6 @@ class TestProfileAPI:
         init_api_objects(login_session)
         profile_api_object = login_session.profile_api_object
 
-        # Login to get access token first
         access_token = login_session.headers.get('Authorization')
 
         # Get user profile info
