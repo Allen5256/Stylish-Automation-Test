@@ -33,7 +33,7 @@ def get_login_driver(driver, worker_id):
 @pytest.fixture(name='product_page')
 def head_to_product_page(driver, products_info):
     product_id = random.choice(products_info.index)
-    page_obj = ProductPage(driver, domain, product_id)
+    page_obj = ProductPage(driver, product_id)
     driver.get(page_obj.url)
     yield page_obj
 
