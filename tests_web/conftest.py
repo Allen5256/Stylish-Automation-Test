@@ -14,7 +14,7 @@ from test_data import *
 
 @pytest.fixture(name='driver')
 def init_webdriver():
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.set_window_size(1920, 1080)
     yield driver
     allure.attach(driver.get_screenshot_as_png())
